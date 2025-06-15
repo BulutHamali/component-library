@@ -1,54 +1,17 @@
-# React + TypeScript + Vite
+## Reflection Questions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 1. How did you handle optional props in your components?
 
-Currently, two official plugins are available:
+I used TypeScript's `?` syntax to mark props as optional in the interface. Inside the component, I used conditional rendering (like `if (prop)` or `{prop && ...}`) to check whether the prop exists before trying to use it. This helped avoid errors and made the components more flexible.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2. What considerations did you make when designing the component interfaces?
 
-## Expanding the ESLint configuration
+I thought about what each component needed to display or do and created interfaces based on those needs. I grouped related data (like `user` or `product`) into their own types to keep things organized. I also made some props optional so the components could be reused in different situations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. How did you ensure type safety across your components?
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+I used TypeScript interfaces to define clear types for all props. I imported these interfaces into each component file and typed the `props` using `React.FC<YourPropsType>`. This helped me catch mistakes early, like missing or misused props, right in my code editor.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 4. What challenges did you face when implementing component composition?
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+At first, it was a little tricky to figure out how to pass props between components and when to use `children`. I had to carefully think about how to keep components reusable while still allowing flexibility. Once I understood how React passes props and how `children` works, it became much easier to nest components and combine them in `App.tsx`.
