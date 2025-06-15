@@ -18,13 +18,13 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
       {showEmail && <p className="text-gray-600">{user.email}</p>}
       {showRole && <p className="text-gray-500">{user.role}</p>}
       {onEdit && (
-        <button
-          onClick={() => onEdit(user.id)}
-          className="mt-2 text-blue-500 hover:underline"
-        >
-          Edit Profile
-        </button>
-      )}
+      <button
+        onClick={() => onEdit(user.id)}
+        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+      >
+        Edit Profile
+      </button>
+    )}
       {children && <div className="mt-2">{children}</div>}
     </div>
   );
