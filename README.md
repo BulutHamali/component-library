@@ -15,3 +15,9 @@ I used TypeScript interfaces to define clear types for all props. I imported the
 ### 4. What challenges did you face when implementing component composition?
 
 At first, it was a little tricky to figure out how to pass props between components and when to use `children`. I had to carefully think about how to keep components reusable while still allowing flexibility. Once I understood how React passes props and how `children` works, it became much easier to nest components and combine them in `App.tsx`.
+
+
+## App Screenshot
+
+![App Screenshot](./assets/screenshot-app.png)
+
